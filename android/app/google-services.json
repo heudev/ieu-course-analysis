@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "418262752163",
+    "firebase_url": "https://courseanalysis-d6b2e-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "courseanalysis-d6b2e",
+    "storage_bucket": "courseanalysis-d6b2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418262752163:android:5f73c42ce31e17e11e9816",
+        "android_client_info": {
+          "package_name": "com.example.courseanalysis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418262752163-8ipmdbpi3om4cu8qs7gmhmplspg721if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJLCxay_3A32LQkPweyz8dtvdrYwzKtpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418262752163-8ipmdbpi3om4cu8qs7gmhmplspg721if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
