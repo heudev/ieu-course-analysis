@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courseanalysis/screens/faculties.dart';
 import 'package:flutter/material.dart';
 
 class EnrolledDepartments extends StatelessWidget {
@@ -36,7 +37,14 @@ class EnrolledDepartments extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Faculties(),
+                        ),
+                      );
+                    },
                     child: const Text('Add new department'),
                   ),
                 );
