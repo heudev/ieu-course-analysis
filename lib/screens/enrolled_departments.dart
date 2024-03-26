@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courseanalysis/screens/courses.dart';
 import 'package:courseanalysis/screens/faculties.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +94,14 @@ class EnrolledDepartments extends StatelessWidget {
                 child: ListTile(
                   title: Text(department['department']),
                   subtitle: Text(department['faculty']),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CoursesScreen(data: department),
+                      ),
+                    );
+                  },
                 ),
               );
             },

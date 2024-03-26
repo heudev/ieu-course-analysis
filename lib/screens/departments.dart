@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:uuid/uuid.dart';
 
 class Departments extends StatefulWidget {
   final String faculty;
   final List<Map<String, dynamic>> departments;
 
-  Departments({required this.faculty, required this.departments});
+  const Departments(
+      {super.key, required this.faculty, required this.departments});
 
   @override
-  _Departments createState() => _Departments();
+  State<Departments> createState() => _Departments();
 }
 
 class _Departments extends State<Departments> {
@@ -20,20 +22,21 @@ class _Departments extends State<Departments> {
     });
 
     try {
-      /* const uuid = Uuid();
-       final List<Map> coursesWithIds = courses.map((course) {
+      final List<dynamic> courses = department['courses'];
+
+      const uuid = Uuid();
+      final List<Map> coursesWithIds = courses.map((course) {
         final String courseId = uuid.v4();
         return {
           ...course,
           'id': courseId,
         };
-      }).toList(); */
+      }).toList();
 
-      final List<dynamic> courses = department['courses'];
       final data = {
         "department": department['department'],
         "faculty": widget.faculty,
-        "courses": courses,
+        "courses": coursesWithIds,
         "createdAt": FieldValue.serverTimestamp(),
         "updatedAt": FieldValue.serverTimestamp(),
         "email": "",
