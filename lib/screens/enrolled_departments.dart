@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:courseanalysis/screens/courses.dart';
 import 'package:courseanalysis/screens/faculties.dart';
+import 'package:courseanalysis/screens/profile.dart';
 import 'package:flutter/material.dart';
 
 class EnrolledDepartments extends StatelessWidget {
@@ -9,6 +10,22 @@ class EnrolledDepartments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Added Departments'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
       body: StreamBuilder(
         stream:
             FirebaseFirestore.instance.collection('departments').snapshots(),
