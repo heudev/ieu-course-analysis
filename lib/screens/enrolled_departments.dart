@@ -11,7 +11,7 @@ class EnrolledDepartments extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Added Departments'),
+        title: const Text('Enrolled Departments'),
         actions: [
           IconButton(
             icon: const Icon(Icons.person),

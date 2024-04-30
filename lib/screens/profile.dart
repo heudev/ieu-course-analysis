@@ -5,10 +5,10 @@ class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreen();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreen extends State<ProfileScreen> {
   late User? _user;
 
   @override
