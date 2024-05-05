@@ -1,5 +1,5 @@
-import 'package:courseanalysis/screens/enrolled_departments.dart';
-import 'package:courseanalysis/screens/sign_in.dart';
+import 'package:courseanalysis/features/auth/sign_in.dart';
+import 'package:courseanalysis/features/enrolled_department/departments.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
             return const CircularProgressIndicator();
           }
           if (snapshot.hasData) {
-            return const EnrolledDepartments();
+            return EnrolledDepartments();
           } else {
             return const SignIn();
           }

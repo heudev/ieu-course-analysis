@@ -1,11 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:courseanalysis/screens/courses.dart';
-import 'package:courseanalysis/screens/faculties.dart';
-import 'package:courseanalysis/screens/profile.dart';
+import 'package:courseanalysis/features/auth/profile.dart';
+import 'package:courseanalysis/features/enrolled_department/courses.dart';
+import 'package:courseanalysis/features/enrolled_department/models/department.dart';
+import 'package:courseanalysis/features/enrolled_department/services/firestore_service.dart';
 import 'package:flutter/material.dart';
+import 'package:courseanalysis/features/new_department/faculties.dart';
 
 class EnrolledDepartments extends StatelessWidget {
-  const EnrolledDepartments({super.key});
+  final FirestoreService departmentService = FirestoreService();
+
+  EnrolledDepartments({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,9 @@ class EnrolledDepartments extends StatelessWidget {
           ),
         ],
       ),
-      body: StreamBuilder(
-        stream:
-            FirebaseFirestore.instance.collection('departments').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      body: StreamBuilder<List<Department>>(
+        stream: departmentService.getDepartmentsStream(),
+        builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Text('Error: ${snapshot.error}'),
@@ -42,16 +44,12 @@ class EnrolledDepartments extends StatelessWidget {
             );
           }
 
-          List<Map<String, dynamic>> data = snapshot.data!.docs.map((doc) {
-            Map<String, dynamic> docData = doc.data() as Map<String, dynamic>;
-            docData['docId'] = doc.id;
-            return docData;
-          }).toList();
+          List<Department> departments = snapshot.data!;
 
           return ListView.builder(
-            itemCount: data.length + 1,
+            itemCount: departments.length + 1,
             itemBuilder: (context, index) {
-              if (index == data.length) {
+              if (index == departments.length) {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
@@ -59,7 +57,7 @@ class EnrolledDepartments extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Faculties(),
+                          builder: (context) => const FacultyScreen(),
                         ),
                       );
                     },
@@ -68,10 +66,10 @@ class EnrolledDepartments extends StatelessWidget {
                 );
               }
 
-              Map<String, dynamic> department = data[index];
+              Department department = departments[index];
 
               return Dismissible(
-                key: Key(department['docId']),
+                key: Key(department.docId),
                 direction: DismissDirection.endToStart,
                 background: Container(
                   alignment: Alignment.centerRight,
@@ -102,20 +100,17 @@ class EnrolledDepartments extends StatelessWidget {
                   );
                 },
                 onDismissed: (direction) {
-                  // Delete the department from Firestore
-                  FirebaseFirestore.instance
-                      .collection('departments')
-                      .doc(department['docId'])
-                      .delete();
+                  departmentService.deleteDepartment(department.docId);
                 },
                 child: ListTile(
-                  title: Text(department['department']),
-                  subtitle: Text(department['faculty']),
+                  title: Text(department.departmentName),
+                  subtitle: Text(department.facultyName),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CoursesScreen(data: department),
+                        builder: (context) =>
+                            CoursesScreen(department: department),
                       ),
                     );
                   },

@@ -1,58 +1,49 @@
+import 'package:courseanalysis/features/new_department/services/firestore_service.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uuid/uuid.dart';
 
 class Departments extends StatefulWidget {
-  final String faculty;
-  final List<Map<String, dynamic>> departments;
+  final String facultyName;
+  final List departments;
 
   const Departments(
-      {super.key, required this.faculty, required this.departments});
+      {super.key, required this.facultyName, required this.departments});
 
   @override
-  State<Departments> createState() => _Departments();
+  State<Departments> createState() => _DepartmentsState();
 }
 
-class _Departments extends State<Departments> {
+class _DepartmentsState extends State<Departments> {
   final Map<int, bool> _isSuccessMap = {};
 
-  void addDataToFirestore(Map<String, dynamic> department, int index) async {
+  void addDataToFirestore(dynamic department, int index) async {
     setState(() {
       _isSuccessMap[index] = false;
     });
 
     try {
-      final List<dynamic> courses = department['courses'];
-
-      const uuid = Uuid();
-      final List<Map> coursesWithIds = courses.map((course) {
-        final String courseId = uuid.v4();
-        return {
-          ...course,
-          'id': courseId,
-        };
-      }).toList();
-
-      final data = {
-        "department": department['department'],
-        "faculty": widget.faculty,
-        "courses": coursesWithIds,
-        "createdAt": FieldValue.serverTimestamp(),
-        "updatedAt": FieldValue.serverTimestamp(),
-        "email": "",
-        "name": "",
-        "photoURL": "",
-        "uid": "",
-      };
-      final DocumentReference docRef =
-          await FirebaseFirestore.instance.collection('departments').add(data);
-      print('Added Data with ID: ${docRef.id}');
-
-      await Future.delayed(const Duration(seconds: 2));
+      await FirestoreService.addDataToFirestore(widget.facultyName, department);
 
       setState(() {
         _isSuccessMap[index] = true;
       });
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Success'),
+            content: const Text('Department added successfully!'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     } catch (e) {
       print('Error adding data to Firestore: $e');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -68,14 +59,14 @@ class _Departments extends State<Departments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.faculty),
+        title: Text(widget.facultyName),
       ),
       body: ListView.builder(
         itemCount: widget.departments.length,
         itemBuilder: (context, index) {
           var department = widget.departments[index];
           return ListTile(
-              title: Text(department['department']),
+              title: Text(department.departmentName),
               trailing: _isSuccessMap[index] == true
                   ? const Padding(
                       padding: EdgeInsets.only(right: 11.0),

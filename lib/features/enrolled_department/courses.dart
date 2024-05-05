@@ -1,53 +1,48 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:courseanalysis/screens/academic_progress.dart';
+import 'package:courseanalysis/features/enrolled_department/academic_progress.dart';
+import 'package:courseanalysis/features/enrolled_department/models/course.dart';
+import 'package:courseanalysis/features/enrolled_department/models/department.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-/* 
-"departments": [
-      {
-        "department": "Department of Aerospace Engineering",
-        "courses": [
-          { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": "3", "grade": "", "semester": "1. Year Fall Semester", "checked": false, "taking": false },
-          { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": "4", "grade": "", "semester": "1. Year Fall Semester", "checked": false, "taking": false },
+class CourseService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-        }
-      ]
- */
-
-class CoursesScreen extends StatefulWidget {
-  final Map<String, dynamic> data;
-
-  const CoursesScreen({super.key, required this.data});
-
-  @override
-  State<CoursesScreen> createState() => _CoursesScreen();
+  Future<void> updateCourses(String departmentId, List<Course> courses) async {
+    List<Map<String, Object>> courseJsonList =
+        courses.map((course) => course.toJson()).toList();
+    await _firestore
+        .collection('departments')
+        .doc(departmentId)
+        .update({'courses': courseJsonList});
+  }
 }
 
-class _CoursesScreen extends State<CoursesScreen> {
-  late List<Map<String, dynamic>> courses;
+class CoursesScreen extends StatefulWidget {
+  final Department department;
+
+  const CoursesScreen({super.key, required this.department});
+
+  @override
+  State<CoursesScreen> createState() => _CoursesScreenState();
+}
+
+class _CoursesScreenState extends State<CoursesScreen> {
+  late List<Course> courses;
 
   @override
   void initState() {
     super.initState();
-    courses = List<Map<String, dynamic>>.from(widget.data['courses']);
+    courses = widget.department.courses;
   }
 
-  Future<void> updateCourseOrder() async {
-    widget.data['courses'] = courses;
-    await FirebaseFirestore.instance
-        .collection('departments')
-        .doc(widget.data['docId'])
-        .update({'courses': courses});
-
-    setState(() {});
-  }
+  final CourseService courseService = CourseService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            '${widget.data['department'].replaceAll('Department of', '')}'),
+            widget.department.departmentName.replaceAll('Department of', '')),
         actions: [
           IconButton(
             icon: const Icon(Icons.insert_chart_rounded),
@@ -56,7 +51,7 @@ class _CoursesScreen extends State<CoursesScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      AcademicProgressScreen(data: widget.data),
+                      AcademicProgressScreen(courses: courses),
                 ),
               );
             },
@@ -66,19 +61,13 @@ class _CoursesScreen extends State<CoursesScreen> {
       body: ReorderableListView.builder(
         itemCount: courses.length,
         itemBuilder: (context, index) {
-          Map<String, dynamic> course = courses[index];
-
-          /* List<String> emptyArray = [];
-          if (!emptyArray.contains(course['id'])) {
-            emptyArray.add(course['id']);
-          }
-          print(emptyArray); */
+          Course course = courses[index];
 
           return ListTile(
-            key: Key(course['id']), // Provide a unique key for reordering
-            title: Text(course['name']),
+            key: Key(course.id), // Provide a unique key for reordering
+            title: Text(course.name),
 
-            subtitle: Text('Code: ${course['code']}'),
+            subtitle: Text('Code: ${course.code}'),
             onTap: () {
               showModalBottomSheet(
                 context: context,
@@ -102,37 +91,37 @@ class _CoursesScreen extends State<CoursesScreen> {
                                 ),
                               ),
                               TextFormField(
-                                initialValue: course['name'],
+                                initialValue: course.name,
                                 decoration:
                                     const InputDecoration(labelText: 'Name'),
                                 onChanged: (value) {
                                   setState(() {
-                                    course['name'] = value;
+                                    course.name = value;
                                   });
                                 },
                               ),
                               TextFormField(
-                                initialValue: course['code'],
+                                initialValue: course.code,
                                 decoration:
                                     const InputDecoration(labelText: 'Code'),
                                 onChanged: (value) {
                                   setState(() {
-                                    course['code'] = value;
+                                    course.code = value;
                                   });
                                 },
                               ),
                               TextFormField(
-                                initialValue: course['ects'].toString(),
+                                initialValue: course.ects.toString(),
                                 decoration:
                                     const InputDecoration(labelText: 'ECTS'),
                                 onChanged: (value) {
                                   setState(() {
-                                    course['ects'] = value;
+                                    course.ects = value as int;
                                   });
                                 },
                               ),
                               DropdownButtonFormField<String>(
-                                value: course['semester'],
+                                value: course.semester,
                                 decoration: const InputDecoration(
                                   labelText: 'Semester',
                                 ),
@@ -185,7 +174,7 @@ class _CoursesScreen extends State<CoursesScreen> {
                                 ],
                                 onChanged: (value) {
                                   setState(() {
-                                    course['semester'] = value;
+                                    course.semester = value!;
                                   });
                                 },
                               ),
@@ -240,19 +229,19 @@ class _CoursesScreen extends State<CoursesScreen> {
                                 ],
                                 onChanged: (String? value) {
                                   setState(() {
-                                    course['grade'] = value;
+                                    course.grade = value!;
                                   });
                                 },
                               ),
 
                               // Prerequisites
                               TextFormField(
-                                initialValue: course['prerequisites'] ?? '',
+                                initialValue: course.prerequisites ?? '',
                                 decoration: const InputDecoration(
                                     labelText: 'Prerequisites'),
                                 onChanged: (value) {
                                   setState(() {
-                                    course['prerequisites'] = value;
+                                    course.prerequisites = value;
                                   });
                                 },
                               ),
@@ -261,7 +250,8 @@ class _CoursesScreen extends State<CoursesScreen> {
                               const SizedBox(height: 16.0),
                               ElevatedButton(
                                 onPressed: () async {
-                                  updateCourseOrder();
+                                  await courseService.updateCourses(
+                                      widget.department.docId, courses);
                                   Navigator.pop(context);
                                 },
                                 child: const Text('Update'),
@@ -282,10 +272,11 @@ class _CoursesScreen extends State<CoursesScreen> {
             if (newIndex > oldIndex) {
               newIndex -= 1;
             }
-            final Map<String, dynamic> course = courses.removeAt(oldIndex);
+            final Course course = courses.removeAt(oldIndex);
             courses.insert(newIndex, course);
           });
-          updateCourseOrder();
+          courseService.updateCourses(widget.department.docId, courses);
+          // Update course order in Firebase here
         },
       ),
     );

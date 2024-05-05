@@ -1,10 +1,12 @@
+import 'package:courseanalysis/features/enrolled_department/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:courseanalysis/utils/calculations.dart';
+import 'package:courseanalysis/features/enrolled_department/controllers/calculations.dart';
 
 class AcademicProgressScreen extends StatelessWidget {
-  final Map<String, dynamic> data;
-  const AcademicProgressScreen({super.key, required this.data});
+  final List<Course> courses;
+
+  const AcademicProgressScreen({super.key, required this.courses});
 
 /* 
 "departments": [
@@ -16,11 +18,17 @@ class AcademicProgressScreen extends StatelessWidget {
 
         }
       ]
- */
+*/
 
   @override
   Widget build(BuildContext context) {
-    print(calculateTotalECTS(data));
+    CourseAnalysisFacade analysisFacade = CourseAnalysisFacade(courses);
+    int successfulCourses = analysisFacade.calculateSuccessfulCourses();
+    int failedCourses = analysisFacade.calculateFailedCourses();
+    int takingCourses = analysisFacade.calculateTakingCourses();
+    Object gpa = analysisFacade.calculateGPA();
+    Map<String, Object> totalECTS = analysisFacade.calculateTotalECTS();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Academic Progress"),
@@ -36,7 +44,7 @@ class AcademicProgressScreen extends StatelessWidget {
                   radius: 45.0,
                   lineWidth: 4.0,
                   percent: 1,
-                  center: Text(calculateSuccessfulCourses(data).toString()),
+                  center: Text(successfulCourses.toString()),
                   progressColor: Colors.green,
                   animation: true,
                   footer: const Text("Success"),
@@ -48,7 +56,7 @@ class AcademicProgressScreen extends StatelessWidget {
                   radius: 45.0,
                   lineWidth: 4.0,
                   percent: 1,
-                  center: Text(calculateFailedCourses(data).toString()),
+                  center: Text(failedCourses.toString()),
                   progressColor: Colors.red,
                   animation: true,
                   footer: const Text("Fail"),
@@ -60,7 +68,7 @@ class AcademicProgressScreen extends StatelessWidget {
                   radius: 45.0,
                   lineWidth: 4.0,
                   percent: 1,
-                  center: Text(calculateTakingCourses(data).toString()),
+                  center: Text(takingCourses.toString()),
                   progressColor: Colors.orange,
                   animation: true,
                   footer: const Text("Enrolled"),
@@ -77,7 +85,7 @@ class AcademicProgressScreen extends StatelessWidget {
                   radius: 45.0,
                   lineWidth: 4.0,
                   percent: 1,
-                  center: Text(calculateGPA(data).toString()),
+                  center: Text(gpa.toString()),
                   progressColor: Colors.blue,
                   animation: true,
                   footer: const Text("CGPA"),
@@ -88,9 +96,9 @@ class AcademicProgressScreen extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 45.0,
                   lineWidth: 4.0,
-                  percent: calculateTotalECTS(data)['ratio'] as double,
+                  percent: totalECTS['ratio'] as double,
                   center: Text(
-                      "${calculateTotalECTS(data)['takenECTS']}/${calculateTotalECTS(data)['totalECTS']}"),
+                      "${totalECTS['takenECTS']}/${totalECTS['totalECTS']}"),
                   progressColor: Colors.purple,
                   animation: true,
                   footer: const Text("ECTS"),

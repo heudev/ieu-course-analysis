@@ -16,7 +16,6 @@ class SignIn extends StatelessWidget {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
-      // navigate to the next screen
     } catch (e) {
       print('Error signing in with Google: $e');
       ScaffoldMessenger.of(context).showSnackBar(

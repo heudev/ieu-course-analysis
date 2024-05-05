@@ -1,10 +1,9 @@
 [
   {
-    "faculty": "Faculty of Engineering",
-    "image": "",
+    "facultyName": "Faculty of Engineering",
     "departments": [
       {
-        "department": "Department of Aerospace Engineering",
+        "departmentName": "Department of Aerospace Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -58,7 +57,7 @@
         ]
       },
       {
-        "department": "Department of Biomedical Engineering",
+        "departmentName": "Department of Biomedical Engineering",
         "courses": [
           { "code": "CHEM 100", "prerequisites": null, "name": "General Chemistry", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -111,7 +110,7 @@
         ]
       },
       {
-        "department": "Department of Civil Engineering",
+        "departmentName": "Department of Civil Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -165,7 +164,7 @@
         ]
       },
       {
-        "department": "Department of Computer Engineering",
+        "departmentName": "Department of Computer Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -216,7 +215,7 @@
         ]
       },
       {
-        "department": "Department of Electrical and Electronics Engineering",
+        "departmentName": "Department of Electrical and Electronics Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -267,7 +266,7 @@
         ]
       },
       {
-        "department": "Department of Genetics and Bioengineering",
+        "departmentName": "Department of Genetics and Bioengineering",
         "courses": [
           { "code": "CHEM 100", "prerequisites": null, "name": "General Chemistry", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -321,7 +320,7 @@
         ]
       },
       {
-        "department": "Department of Industrial Engineering",
+        "departmentName": "Department of Industrial Engineering",
         "courses": [
           { "code": "CHEM 100", "prerequisites": null, "name": "General Chemistry", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -373,7 +372,7 @@
         ]
       },
       {
-        "department": "Department of Mechanical Engineering",
+        "departmentName": "Department of Mechanical Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -427,7 +426,7 @@
         ]
       },
       {
-        "department": "Department of Mechatronics Engineering",
+        "departmentName": "Department of Mechatronics Engineering",
         "courses": [
           { "code": "CHEM 100", "prerequisites": null, "name": "General Chemistry", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -480,7 +479,7 @@
         ]
       },
       {
-        "department": "Department of Software Engineering",
+        "departmentName": "Department of Software Engineering",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -534,11 +533,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Science",
-    "image": "",
+    "facultyName": "Faculty of Science",
     "departments": [
       {
-        "department": "Department of English Translation and Interpreting",
+        "departmentName": "Department of English Translation and Interpreting",
         "courses": [
           { "code": "ETI 117", "prerequisites": null, "name": "Oral Communication Skills", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ETI 121", "prerequisites": null, "name": "English Composition/Writing Skill", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -592,7 +590,7 @@
         ]
       },
       {
-        "department": "Department of Mathematics",
+        "departmentName": "Department of Mathematics",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IUE 100", "prerequisites": null, "name": "Orientation and Career Planning", "ects": 2, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -644,7 +642,7 @@
         ]
       },
       {
-        "department": "Department of Physics",
+        "departmentName": "Department of Physics",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IUE 100", "prerequisites": null, "name": "Orientation and Career Planning", "ects": 2, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -698,7 +696,7 @@
         ]
       },
       {
-        "department": "Department of Psychology",
+        "departmentName": "Department of Psychology",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IUE 100", "prerequisites": null, "name": "Orientation and Career Planning", "ects": 2, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -750,7 +748,7 @@
         ]
       },
       {
-        "department": "Department of Sociology",
+        "departmentName": "Department of Sociology",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "HUM 103", "prerequisites": null, "name": "Principles of Social Sciences I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -804,11 +802,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Business",
-    "image": "",
+    "facultyName": "Faculty of Business",
     "departments": [
       {
-        "department": "Department of Business Administration",
+        "departmentName": "Department of Business Administration",
         "courses": [
           { "code": "ECON 101", "prerequisites": null, "name": "Principles of Microeconomics", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -861,7 +858,7 @@
         ]
       },
       {
-        "department": "Department of Economics",
+        "departmentName": "Department of Economics",
         "courses": [
           { "code": "ECON 101", "prerequisites": null, "name": "Principles of Microeconomics", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -914,7 +911,7 @@
         ]
       },
       {
-        "department": "Department of International Trade and Finance",
+        "departmentName": "Department of International Trade and Finance",
         "courses": [
           { "code": "ECON 101", "prerequisites": null, "name": "Principles of Microeconomics", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -983,7 +980,7 @@
         ]
       },
       {
-        "department": "Department of Logistics Management",
+        "departmentName": "Department of Logistics Management",
         "courses": [
           { "code": "ECON 101", "prerequisites": null, "name": "Principles of Microeconomics", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1038,7 +1035,7 @@
         ]
       },
       {
-        "department": "Department of Political Science and International Relations",
+        "departmentName": "Department of Political Science and International Relations",
         "courses": [
           { "code": "ECON 101", "prerequisites": null, "name": "Principles of Microeconomics", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1093,11 +1090,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Communication",
-    "image": "",
+    "facultyName": "Faculty of Communication",
     "departments": [
       {
-        "department": "Department of Cinema and Digital Media",
+        "departmentName": "Department of Cinema and Digital Media",
         "courses": [
           { "code": "CDM 111", "prerequisites": null, "name": "History of Moving Images", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "COMM 101", "prerequisites": null, "name": "Introduction to Communication", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1151,7 +1147,7 @@
         ]
       },
       {
-        "department": "Department of New Media and Communication",
+        "departmentName": "Department of New Media and Communication",
         "courses": [
           { "code": "COMM 101", "prerequisites": null, "name": "Introduction to Communication", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1207,7 +1203,7 @@
         ]
       },
       {
-        "department": "Department of Public Relations and Advertising",
+        "departmentName": "Department of Public Relations and Advertising",
         "courses": [
           { "code": "COMM 101", "prerequisites": null, "name": "Introduction to Communication", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1263,11 +1259,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Fine Arts and Design",
-    "image": "",
+    "facultyName": "Faculty of Fine Arts and Design",
     "departments": [
       {
-        "department": "Department of Architecture",
+        "departmentName": "Department of Architecture",
         "courses": [
           { "code": "ARCH 101", "prerequisites": null, "name": "Introduction to Architecture I", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1325,7 +1320,7 @@
         ]
       },
       {
-        "department": "Department of Industrial Design",
+        "departmentName": "Department of Industrial Design",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FFD 101", "prerequisites": null, "name": "Art and Design Studio 1", "ects": 8, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1401,7 +1396,7 @@
         ]
       },
       {
-        "department": "Department of Interior Architecture and Environmental Design",
+        "departmentName": "Department of Interior Architecture and Environmental Design",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FFD 101", "prerequisites": null, "name": "Art and Design Studio 1", "ects": 8, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1460,7 +1455,7 @@
         ]
       },
       {
-        "department": "Department of Textile and Fashion Design",
+        "departmentName": "Department of Textile and Fashion Design",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FA 111", "prerequisites": null, "name": "Drawing and Representation for Fashion Design I", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1542,7 +1537,7 @@
         ]
       },
       {
-        "department": "Department of Visual Communication Design",
+        "departmentName": "Department of Visual Communication Design",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FFD 101", "prerequisites": null, "name": "Art and Design Studio 1", "ects": 8, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1602,11 +1597,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Health Sciences",
-    "image": "",
+    "facultyName": "Faculty of Health Sciences",
     "departments": [
       {
-        "department": "Department of Nursing",
+        "departmentName": "Department of Nursing",
         "courses": [
           { "code": "HEM 103", "prerequisites": null, "name": "Fundamentals of Health I", "ects": 12, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "HEM 105", "prerequisites": null, "name": "Fundamentals of Profession I", "ects": 9, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1655,7 +1649,7 @@
         ]
       },
       {
-        "department": "Department of Physiotherapy and Rehabilitation",
+        "departmentName": "Department of Physiotherapy and Rehabilitation",
         "courses": [
           { "code": "FTR 101", "prerequisites": null, "name": "Basics of Physiotherapy I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "FTR 103", "prerequisites": null, "name": "Anatomy I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1718,11 +1712,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Law",
-    "image": "",
+    "facultyName": "Faculty of Law",
     "departments": [
       {
-        "department": "Faculty of Law",
+        "departmentName": "Faculty of Law",
         "courses": [
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "HUK 103", "prerequisites": null, "name": "Civil Law I", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1787,11 +1780,10 @@
     ]
   },
   {
-    "faculty": "Faculty of Medicine",
-    "image": "",
+    "facultyName": "Faculty of Medicine",
     "departments": [
       {
-        "department": "Medicine",
+        "departmentName": "Medicine",
         "courses": [
           { "code": "CBM 101", "prerequisites": null, "name": "Clinical Basis of Medicine I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1865,11 +1857,10 @@
     ]
   },
   {
-    "faculty": "School of Applied Management Sciences",
-    "image": "",
+    "facultyName": "School of Applied Management Sciences",
     "departments": [
       {
-        "department": "Gastronomy and Culinary Arts Program",
+        "departmentName": "Gastronomy and Culinary Arts Program",
         "courses": [
           { "code": "CLM 101", "prerequisites": null, "name": "Hygiene and Safety", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "CLM 103", "prerequisites": null, "name": "Concepts and Skills for Culinary Arts - I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1926,11 +1917,10 @@
     ]
   },
   {
-    "faculty": "Vocational School",
-    "image": "",
+    "facultyName": "Vocational School",
     "departments": [
       {
-        "department": "Department of Applied English Translation",
+        "departmentName": "Department of Applied English Translation",
         "courses": [
           { "code": "AET 101", "prerequisites": null, "name": "Vocabulary and Composition I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "AET 103", "prerequisites": null, "name": "Comparative Grammar I", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -1964,7 +1954,7 @@
         ]
       },
       {
-        "department": "Department of Architectural Restoration (Turkish)",
+        "departmentName": "Department of Architectural Restoration (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2002,7 +1992,7 @@
         ]
       },
       {
-        "department": "Department of Banking and Insurance (Turkish)",
+        "departmentName": "Department of Banking and Insurance (Turkish)",
         "courses": [
           { "code": "BNK 101", "prerequisites": null, "name": "Introduction to Insurance", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ELEC 001", "prerequisites": null, "name": "Elective Course I", "ects": 5, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2038,7 +2028,7 @@
         ]
       },
       {
-        "department": "Department of Civil Aviation Cabin Services (Turkish)",
+        "departmentName": "Department of Civil Aviation Cabin Services (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2076,7 +2066,7 @@
         ]
       },
       {
-        "department": "Department of Civil Aviation Transportation Management (Turkish)",
+        "departmentName": "Department of Civil Aviation Transportation Management (Turkish)",
         "courses": [
           { "code": "BILT 100", "prerequisites": null, "name": "Introduction to Computer and Information Technology", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "HYHY 101", "prerequisites": null, "name": "Introduction to Civil Aviation", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2117,7 +2107,7 @@
         ]
       },
       {
-        "department": "Department of Computer Programming (Turkish)",
+        "departmentName": "Department of Computer Programming (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2152,7 +2142,7 @@
         ]
       },
       {
-        "department": "Department of Construction Technology",
+        "departmentName": "Department of Construction Technology",
         "courses": [
           { "code": "BILT 100", "prerequisites": null, "name": "Introduction to Computer and Information Technology", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2188,7 +2178,7 @@
         ]
       },
       {
-        "department": "Department of Foreign Trade (Turkish)",
+        "departmentName": "Department of Foreign Trade (Turkish)",
         "courses": [
           { "code": "DT 100", "prerequisites": null, "name": "Basic Concepts of Foreign Trade", "ects": 6, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ELEC 001", "prerequisites": null, "name": "Elective Course I", "ects": 4, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2225,7 +2215,7 @@
         ]
       },
       {
-        "department": "Department of Graphic Design (Turkish)",
+        "departmentName": "Department of Graphic Design (Turkish)",
         "courses": [
           { "code": "BILT 100", "prerequisites": null, "name": "Introduction to Computer and Information Technology", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2264,7 +2254,7 @@
         ]
       },
       {
-        "department": "Department of Interior Design (Turkish)",
+        "departmentName": "Department of Interior Design (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2299,7 +2289,7 @@
         ]
       },
       {
-        "department": "Department of Occupational Health and Safety (Turkish)",
+        "departmentName": "Department of Occupational Health and Safety (Turkish)",
         "courses": [
           { "code": "BILT 100", "prerequisites": null, "name": "Introduction to Computer and Information Technology", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2337,7 +2327,7 @@
         ]
       },
       {
-        "department": "Department of Radio and Tv Programming (Turkish)",
+        "departmentName": "Department of Radio and Tv Programming (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
@@ -2377,7 +2367,7 @@
         ]
       },
       {
-        "department": "Department of Tourism and Hotel Management (Turkish)",
+        "departmentName": "Department of Tourism and Hotel Management (Turkish)",
         "courses": [
           { "code": "IEU 110", "prerequisites": null, "name": "Academic and Social Orientation", "ects": 1, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },
           { "code": "ING 101", "prerequisites": null, "name": "English I", "ects": 3, "grade": null, "semester": "1. Year Fall Semester", "checked": false, "taking": false },

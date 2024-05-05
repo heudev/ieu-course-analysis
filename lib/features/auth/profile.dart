@@ -34,7 +34,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                     radius: 50,
                     backgroundImage: NetworkImage(_user!.photoURL ?? ''),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Text(
                     _user!.displayName ?? '',
                     style: const TextStyle(fontSize: 20),
@@ -46,6 +46,7 @@ class _ProfileScreen extends State<ProfileScreen> {
                   ),
                 ],
               ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
