@@ -106,4 +106,20 @@ class CourseAnalysisFacade {
       'ratio': ratio,
     };
   }
+
+  Map<String, Object> calculateCompletedCourses() {
+    int highGradeCourses = 0;
+    for (var course in courses) {
+      var grade = course.grade;
+      if (calculateGradePoints(grade) >= calculateGradePoints('DD')) {
+        highGradeCourses++;
+      }
+    }
+    double ratio = highGradeCourses / courses.length;
+    return {
+      'completedCourses': highGradeCourses,
+      'totalCourses': courses.length,
+      'ratio': ratio,
+    };
+  }
 }

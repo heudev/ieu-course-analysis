@@ -48,3 +48,5 @@ class Course {
     };
   }
 }
+
+// json serizable freezed

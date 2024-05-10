@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:courseanalysis/features/new_department/models/department.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreService {
@@ -22,17 +23,19 @@ class FirestoreService {
         "courses": coursesWithIds,
         "createdAt": FieldValue.serverTimestamp(),
         "updatedAt": FieldValue.serverTimestamp(),
-        "email": "",
-        "name": "",
-        "photoURL": "",
-        "uid": "",
+        "user": {
+          "email": FirebaseAuth.instance.currentUser!.email,
+          "name": FirebaseAuth.instance.currentUser!.displayName,
+          "photoURL": FirebaseAuth.instance.currentUser!.photoURL,
+          "uid": FirebaseAuth.instance.currentUser!.uid,
+        },
       };
 
       final DocumentReference docRef =
           await FirebaseFirestore.instance.collection('departments').add(data);
       print('Added Data with ID: ${docRef.id}');
 
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
 
       return docRef.id;
     } catch (e) {

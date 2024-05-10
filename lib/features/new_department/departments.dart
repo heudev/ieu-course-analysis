@@ -1,3 +1,4 @@
+import 'package:courseanalysis/features/enrolled_department/departments.dart';
 import 'package:courseanalysis/features/new_department/services/firestore_service.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,13 @@ class _DepartmentsState extends State<Departments> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EnrolledDepartments(),
+                    ),
+                    (_) => false,
+                  );
                 },
                 child: const Text('OK'),
               ),

@@ -64,9 +64,9 @@ class _CoursesScreenState extends State<CoursesScreen> {
           Course course = courses[index];
 
           return ListTile(
-            key: Key(course.id), // Provide a unique key for reordering
+            tileColor: course.taking ? Colors.green[100] : null,
+            key: Key(course.id),
             title: Text(course.name),
-
             subtitle: Text('Code: ${course.code}'),
             onTap: () {
               showModalBottomSheet(
@@ -178,7 +178,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                   });
                                 },
                               ),
-
                               DropdownButtonFormField<String>(
                                 value:
                                     null, // Set the initial value to match one of the DropdownMenuItem values
@@ -233,8 +232,27 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                   });
                                 },
                               ),
-
-                              // Prerequisites
+                              DropdownButtonFormField<bool>(
+                                value: false,
+                                decoration: const InputDecoration(
+                                  labelText: 'Enrolling the course',
+                                ),
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: true,
+                                    child: Text('Yes'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: false,
+                                    child: Text('No'),
+                                  ),
+                                ],
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    course.taking = value!;
+                                  });
+                                },
+                              ),
                               TextFormField(
                                 initialValue: course.prerequisites ?? '',
                                 decoration: const InputDecoration(
@@ -245,8 +263,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                   });
                                 },
                               ),
-
-                              // Add other form fields here
                               const SizedBox(height: 16.0),
                               ElevatedButton(
                                 onPressed: () async {
@@ -276,7 +292,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
             courses.insert(newIndex, course);
           });
           courseService.updateCourses(widget.department.docId, courses);
-          // Update course order in Firebase here
         },
       ),
     );

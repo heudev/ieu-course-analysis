@@ -7,19 +7,37 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  final darkTheme = ThemeData.dark().copyWith(
+    primaryColor: Colors.white,
+    scaffoldBackgroundColor: const Color.fromARGB(255, 18, 18, 18),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        textStyle: MaterialStateProperty.all<TextStyle>(
+          const TextStyle(color: Colors.red),
+        ),
+      ),
+    ),
+  );
+
+  final lightTheme = ThemeData.light().copyWith(
+    primaryColor: Colors.blue,
+    scaffoldBackgroundColor: Colors.white,
+  );
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Firebase Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      themeMode: ThemeMode.light,
+      darkTheme: darkTheme,
+      theme: lightTheme,
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

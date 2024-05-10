@@ -28,6 +28,8 @@ class AcademicProgressScreen extends StatelessWidget {
     int takingCourses = analysisFacade.calculateTakingCourses();
     Object gpa = analysisFacade.calculateGPA();
     Map<String, Object> totalECTS = analysisFacade.calculateTotalECTS();
+    Map<String, Object> completedCourses =
+        analysisFacade.calculateCompletedCourses();
 
     return Scaffold(
       appBar: AppBar(
@@ -109,8 +111,9 @@ class AcademicProgressScreen extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 45.0,
                   lineWidth: 4.0,
-                  percent: 0.2,
-                  center: const Text("6/46"),
+                  percent: completedCourses["ratio"] as double,
+                  center: Text(
+                      "${completedCourses["completedCourses"]}/${completedCourses['totalCourses']}"),
                   progressColor: Colors.purple,
                   animation: true,
                   footer: const Text("Completed"),
