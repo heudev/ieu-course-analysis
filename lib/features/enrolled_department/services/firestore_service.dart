@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:courseanalysis/features/enrolled_department/models/course.dart';
 import 'package:courseanalysis/features/enrolled_department/models/department.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -35,5 +36,14 @@ class FirestoreService {
 
   Future<void> addDepartment(Department department) async {
     await _firestore.collection('departments').add(department.toJson());
+  }
+
+  Future<void> updateCourses(String departmentId, List<Course> courses) async {
+    List<Map<String, Object>> courseJsonList =
+        courses.map((course) => course.toJson()).toList();
+    await _firestore
+        .collection('departments')
+        .doc(departmentId)
+        .update({'courses': courseJsonList});
   }
 }
