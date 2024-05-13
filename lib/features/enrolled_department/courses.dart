@@ -207,6 +207,10 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                         child: Text('2. Year Fall Semester'),
                                       ),
                                       DropdownMenuItem(
+                                        value: '2. Year Spring Semester',
+                                        child: Text('2. Year Spring Semester'),
+                                      ),
+                                      DropdownMenuItem(
                                         value: '3. Year Fall Semester',
                                         child: Text('3. Year Fall Semester'),
                                       ),

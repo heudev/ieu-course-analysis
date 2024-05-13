@@ -30,6 +30,8 @@ class AcademicProgressScreen extends StatelessWidget {
     Map<String, Object> totalECTS = analysisFacade.calculateTotalECTS();
     Map<String, Object> completedCourses =
         analysisFacade.calculateCompletedCourses();
+    List<Map<String, Object>> calculateSemesterGPAs =
+        analysisFacade.calculateSemesterGPAs();
 
     return Scaffold(
       appBar: AppBar(
@@ -121,33 +123,59 @@ class AcademicProgressScreen extends StatelessWidget {
               ],
             ),
           ),
+          const Center(
+            child: Text("Semester GPA's", style: TextStyle(fontSize: 20.0)),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5),
+          ),
           Container(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(.0),
             child: Wrap(
-              alignment: WrapAlignment.center,
+              alignment: WrapAlignment.center, // Ortala
+              runSpacing: 2.0,
               children: <Widget>[
-                CircularPercentIndicator(
-                  radius: 60.0,
-                  lineWidth: 4.0,
-                  percent: 1,
-                  center: const Text("3.60"),
-                  progressColor: Colors.blue,
-                  animation: true,
-                  footer: const Text("1. Year Fall"),
-                ),
-                const SizedBox(width: 20.0), // Added SizedBox for spacing
-                CircularPercentIndicator(
-                  radius: 60.0,
-                  lineWidth: 4.0,
-                  percent: 1,
-                  center: const Text("3.70"),
-                  progressColor: Colors.blue,
-                  animation: true,
-                  footer: const Text("1. Year Spring"),
-                ),
+                for (int i = 0; i < calculateSemesterGPAs.length; i += 2)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        child: CircularPercentIndicator(
+                          radius: 50.0,
+                          lineWidth: 4.0,
+                          percent: 1,
+                          center:
+                              Text(calculateSemesterGPAs[i]['gpa'].toString()),
+                          progressColor: Colors.blue,
+                          animation: true,
+                          footer: Text(calculateSemesterGPAs[i]['semester']
+                              .toString()
+                              .replaceAll("Semester", "")),
+                        ),
+                      ),
+                      if (i + 1 < calculateSemesterGPAs.length)
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                      Flexible(
+                        child: CircularPercentIndicator(
+                          radius: 50.0,
+                          lineWidth: 4.0,
+                          percent: 1,
+                          center: Text(
+                              calculateSemesterGPAs[i + 1]['gpa'].toString()),
+                          progressColor: Colors.blue,
+                          animation: true,
+                          footer: Text(calculateSemesterGPAs[i + 1]['semester']
+                              .toString()
+                              .replaceAll("Semester", "")),
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
-          )
+          ),
         ]),
       ),
     );
