@@ -136,8 +136,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
                     ? const Icon(Icons.hourglass_empty)
                     : Text(course.grade,
                         style: const TextStyle(fontSize: 18.0)),
-                onTap: () {
-                  showModalBottomSheet(
+                onTap: () async {
+                  await showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
                       return StatefulBuilder(
@@ -184,7 +184,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                         labelText: 'ECTS'),
                                     onChanged: (value) {
                                       setState(() {
-                                        course.ects = value as int;
+                                        course.ects = int.parse(value);
                                       });
                                     },
                                   ),
@@ -354,6 +354,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                       );
                     },
                   );
+                  setState(() {});
                 },
               ));
         },

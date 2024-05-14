@@ -135,9 +135,12 @@ class CourseAnalysisFacade {
     for (var semester in semesters) {
       double totalGradePoints = 0;
       int totalCredits = 0;
+      int passedCourses = 0;
+      int totalCourses = 0;
 
       for (var course in courses) {
         if (course.semester == semester) {
+          totalCourses++;
           var grade = course.grade;
           int ects = course.ects;
 
@@ -145,6 +148,9 @@ class CourseAnalysisFacade {
             var gradePoints = calculateGradePoints(grade);
             totalGradePoints += gradePoints * ects;
             totalCredits += ects;
+            if (grade != 'F' && grade != 'FF') {
+              passedCourses++;
+            }
           }
         }
       }
@@ -152,12 +158,14 @@ class CourseAnalysisFacade {
       if (totalCredits == 0) {
         semesterGPAs.add({
           'semester': semester,
-          'gpa': 0.0,
+          'gpa': 0.0.toStringAsFixed(2),
+          'completed': '0/0',
         });
       } else {
         semesterGPAs.add({
           'semester': semester,
           'gpa': (totalGradePoints / totalCredits).toStringAsFixed(2),
+          'completed': '$passedCourses/$totalCourses',
         });
       }
     }

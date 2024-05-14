@@ -33,6 +33,8 @@ class AcademicProgressScreen extends StatelessWidget {
     List<Map<String, Object>> calculateSemesterGPAs =
         analysisFacade.calculateSemesterGPAs();
 
+    print(calculateSemesterGPAs);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Academic Progress"),
@@ -129,53 +131,57 @@ class AcademicProgressScreen extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 5),
           ),
-          Container(
-            padding: const EdgeInsets.all(.0),
-            child: Wrap(
-              alignment: WrapAlignment.center, // Ortala
-              runSpacing: 2.0,
-              children: <Widget>[
-                for (int i = 0; i < calculateSemesterGPAs.length; i += 2)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Flexible(
-                        child: CircularPercentIndicator(
-                          radius: 50.0,
-                          lineWidth: 4.0,
-                          percent: 1,
-                          center:
-                              Text(calculateSemesterGPAs[i]['gpa'].toString()),
-                          progressColor: Colors.blue,
-                          animation: true,
-                          footer: Text(calculateSemesterGPAs[i]['semester']
-                              .toString()
-                              .replaceAll("Semester", "")),
-                        ),
-                      ),
-                      if (i + 1 < calculateSemesterGPAs.length)
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        ),
-                      Flexible(
-                        child: CircularPercentIndicator(
-                          radius: 50.0,
-                          lineWidth: 4.0,
-                          percent: 1,
-                          center: Text(
-                              calculateSemesterGPAs[i + 1]['gpa'].toString()),
-                          progressColor: Colors.blue,
-                          animation: true,
-                          footer: Text(calculateSemesterGPAs[i + 1]['semester']
-                              .toString()
-                              .replaceAll("Semester", "")),
-                        ),
-                      ),
-                    ],
+          DataTable(
+            columns: const <DataColumn>[
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'Semester',
+                    style: TextStyle(fontStyle: FontStyle.italic),
                   ),
-              ],
-            ),
-          ),
+                ),
+              ),
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'GPA',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'Completed',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
+            ],
+            rows: const <DataRow>[
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('1. Year Fall')),
+                  DataCell(Text('3.35')),
+                  DataCell(Text('6/6')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('1. Year Spring')),
+                  DataCell(Text('3.42')),
+                  DataCell(Text('6/6')),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('2. Year Fall')),
+                  DataCell(Text('3.68')),
+                  DataCell(Text('6/6')),
+                ],
+              ),
+            ],
+          )
         ]),
       ),
     );
