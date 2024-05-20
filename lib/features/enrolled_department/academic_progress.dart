@@ -32,6 +32,8 @@ class AcademicProgressScreen extends StatelessWidget {
         analysisFacade.calculateCompletedCourses();
     List<Map<String, Object>> calculateSemesterGPAs =
         analysisFacade.calculateSemesterGPAs();
+    List<Map<String, Object>> semesterGPAs =
+        analysisFacade.calculateSemesterGPAs();
 
     print(calculateSemesterGPAs);
 
@@ -128,9 +130,6 @@ class AcademicProgressScreen extends StatelessWidget {
           const Center(
             child: Text("Semester GPA's", style: TextStyle(fontSize: 20.0)),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 5),
-          ),
           DataTable(
             columns: const <DataColumn>[
               DataColumn(
@@ -158,32 +157,20 @@ class AcademicProgressScreen extends StatelessWidget {
                 ),
               ),
             ],
-            rows: const <DataRow>[
-              DataRow(
+            rows: semesterGPAs.map((gpaData) {
+              return DataRow(
                 cells: <DataCell>[
-                  DataCell(Text('1. Year Fall')),
-                  DataCell(Text('3.35')),
-                  DataCell(Text('6/6')),
+                  DataCell(Text(gpaData['semester'] as String)),
+                  DataCell(Text(gpaData['gpa'] as String)),
+                  DataCell(Text(gpaData['completed'] as String)),
                 ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text('1. Year Spring')),
-                  DataCell(Text('3.42')),
-                  DataCell(Text('6/6')),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text('2. Year Fall')),
-                  DataCell(Text('3.68')),
-                  DataCell(Text('6/6')),
-                ],
-              ),
-            ],
+              );
+            }).toList(),
           )
         ]),
       ),
     );
   }
 }
+
+// course.semester.contains('Fall') ? Colors.blue : Colors.red

@@ -8,6 +8,9 @@ class CourseAnalysisFacade {
   int calculateSuccessfulCourses() {
     int successfulCourses = 0;
     for (var course in courses) {
+      if (course.taking) {
+        continue;
+      }
       var grade = course.grade;
       if (['AA', 'BA', 'BB', 'CB', 'CC', 'DC', 'DD'].contains(grade)) {
         successfulCourses++;
@@ -19,6 +22,9 @@ class CourseAnalysisFacade {
   int calculateFailedCourses() {
     int failedCourses = 0;
     for (var course in courses) {
+      if (course.taking) {
+        continue;
+      }
       var grade = course.grade;
       if (['FD', 'FF'].contains(grade)) {
         failedCourses++;
@@ -155,20 +161,17 @@ class CourseAnalysisFacade {
         }
       }
 
-      if (totalCredits == 0) {
-        semesterGPAs.add({
-          'semester': semester,
-          'gpa': 0.0.toStringAsFixed(2),
-          'completed': '0/0',
-        });
-      } else {
-        semesterGPAs.add({
-          'semester': semester,
-          'gpa': (totalGradePoints / totalCredits).toStringAsFixed(2),
-          'completed': '$passedCourses/$totalCourses',
-        });
-      }
+      semesterGPAs.add({
+        'semester': semester.split("Semester")[0],
+        'gpa': totalCredits == 0
+            ? 0.0.toStringAsFixed(2)
+            : (totalGradePoints / totalCredits).toStringAsFixed(2),
+        'completed': '$passedCourses/$totalCourses',
+      });
     }
+
+    semesterGPAs.sort(
+        (a, b) => (a['semester'] as String).compareTo(b['semester'] as String));
 
     return semesterGPAs;
   }
