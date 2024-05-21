@@ -32,19 +32,16 @@ class EnrolledDepartments extends StatelessWidget {
       body: StreamBuilder<List<Department>>(
         stream: departmentService.getDepartmentsStream(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          }
-
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
 
-          List<Department> departments = snapshot.data!;
+          {
+            print(snapshot.data);
+          }
+          List<Department> departments = snapshot.data ?? [];
 
           return ListView.builder(
             itemCount: departments.length + 1,

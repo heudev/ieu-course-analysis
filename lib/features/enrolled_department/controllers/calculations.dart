@@ -143,12 +143,14 @@ class CourseAnalysisFacade {
       int totalCredits = 0;
       int passedCourses = 0;
       int totalCourses = 0;
+      int totalECTS = 0;
 
       for (var course in courses) {
         if (course.semester == semester) {
           totalCourses++;
           var grade = course.grade;
           int ects = course.ects;
+          totalECTS += ects;
 
           if (grade != "") {
             var gradePoints = calculateGradePoints(grade);
@@ -167,6 +169,7 @@ class CourseAnalysisFacade {
             ? 0.0.toStringAsFixed(2)
             : (totalGradePoints / totalCredits).toStringAsFixed(2),
         'completed': '$passedCourses/$totalCourses',
+        'totalECTS': totalECTS.toString()
       });
     }
 

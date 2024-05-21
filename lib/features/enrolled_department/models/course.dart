@@ -1,6 +1,11 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'course.g.dart';
+
+@JsonSerializable()
 class Course {
   String code;
-  String? prerequisites;
+  String prerequisites;
   String name;
   int ects;
   String grade;
@@ -21,32 +26,7 @@ class Course {
     required this.id,
   });
 
-  factory Course.fromJson(Map<String, dynamic> json) {
-    return Course(
-      code: json['code'],
-      prerequisites: json['prerequisites'],
-      name: json['name'],
-      ects: json['ects'],
-      grade: json['grade'] ?? "",
-      semester: json['semester'],
-      checked: json['checked'],
-      taking: json['taking'],
-      id: json['id'],
-    );
-  }
-  Map<String, Object> toJson() {
-    return {
-      'code': code,
-      'prerequisites': prerequisites ?? "",
-      'name': name,
-      'ects': ects,
-      'grade': grade,
-      'semester': semester,
-      'checked': checked,
-      'taking': taking,
-      'id': id,
-    };
-  }
-}
+  factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
 
-// json serizable freezed
+  Map<String, dynamic> toJson() => _$CourseToJson(this);
+}

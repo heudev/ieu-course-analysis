@@ -1,18 +1,17 @@
-import 'package:courseanalysis/features/new_department/models/course.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'course.dart';
 
+part 'department.g.dart';
+
+@JsonSerializable()
 class Department {
   final String departmentName;
   final List<Course> courses;
 
   Department({required this.departmentName, required this.courses});
 
-  factory Department.fromJson(Map<String, dynamic> json) {
-    var courseList = json['courses'] as List<dynamic>;
-    List<Course> courses = courseList
-        .map((course) => Course.fromJson(course as Map<String, dynamic>))
-        .toList();
+  factory Department.fromJson(Map<String, dynamic> json) =>
+      _$DepartmentFromJson(json);
 
-    return Department(
-        departmentName: json['departmentName'] as String, courses: courses);
-  }
+  Map<String, dynamic> toJson() => _$DepartmentToJson(this);
 }

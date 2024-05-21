@@ -60,6 +60,13 @@ class _CoursesScreenState extends State<CoursesScreen> {
     courseService.updateCourses(widget.department.docId, courses);
   }
 
+  // order the courses by semester and update the firestore and state
+  void orderCourses() {
+    courses.sort((a, b) => a.semester.compareTo(b.semester));
+    courseService.updateCourses(widget.department.docId, courses);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +74,10 @@ class _CoursesScreenState extends State<CoursesScreen> {
         title: Text(
             widget.department.departmentName.replaceAll('Department of', '')),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.auto_fix_high),
+            onPressed: orderCourses,
+          ),
           IconButton(
             icon: const Icon(Icons.add_box),
             onPressed: addNewCourse,
@@ -178,13 +189,21 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                       });
                                     },
                                   ),
-                                  TextFormField(
-                                    initialValue: course.ects.toString(),
+                                  DropdownButtonFormField<int>(
+                                    value: course.ects,
                                     decoration: const InputDecoration(
-                                        labelText: 'ECTS'),
-                                    onChanged: (value) {
+                                      labelText: 'ECTS',
+                                    ),
+                                    items: List.generate(121, (index) => index)
+                                        .map((int value) =>
+                                            DropdownMenuItem<int>(
+                                              value: value,
+                                              child: Text(value.toString()),
+                                            ))
+                                        .toList(),
+                                    onChanged: (int? newValue) {
                                       setState(() {
-                                        course.ects = int.parse(value);
+                                        course.ects = newValue!;
                                       });
                                     },
                                   ),
@@ -324,7 +343,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                     },
                                   ),
                                   TextFormField(
-                                    initialValue: course.prerequisites ?? '',
+                                    initialValue: course.prerequisites,
                                     decoration: const InputDecoration(
                                         labelText: 'Prerequisites'),
                                     onChanged: (value) {

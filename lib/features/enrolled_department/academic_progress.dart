@@ -127,45 +127,47 @@ class AcademicProgressScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Center(
-            child: Text("Semester GPA's", style: TextStyle(fontSize: 20.0)),
-          ),
-          DataTable(
-            columns: const <DataColumn>[
-              DataColumn(
-                label: Expanded(
-                  child: Text(
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columnSpacing: 35, // Kolonlar arasındaki boşluğu azaltmak için
+              columns: const <DataColumn>[
+                DataColumn(
+                  label: Text(
                     'Semester',
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
+                DataColumn(
+                  label: Text(
                     'GPA',
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ),
-              ),
-              DataColumn(
-                label: Expanded(
-                  child: Text(
+                DataColumn(
+                  label: Text(
+                    'ECTS',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ),
+                DataColumn(
+                  label: Text(
                     'Completed',
                     style: TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ),
-              ),
-            ],
-            rows: semesterGPAs.map((gpaData) {
-              return DataRow(
-                cells: <DataCell>[
-                  DataCell(Text(gpaData['semester'] as String)),
-                  DataCell(Text(gpaData['gpa'] as String)),
-                  DataCell(Text(gpaData['completed'] as String)),
-                ],
-              );
-            }).toList(),
+              ],
+              rows: semesterGPAs.map((gpaData) {
+                return DataRow(
+                  cells: <DataCell>[
+                    DataCell(Text(gpaData['semester'] as String)),
+                    DataCell(Text(gpaData['gpa'] as String)),
+                    DataCell(Text(gpaData['totalECTS'] as String)),
+                    DataCell(Text(gpaData['completed'] as String)),
+                  ],
+                );
+              }).toList(),
+            ),
           )
         ]),
       ),

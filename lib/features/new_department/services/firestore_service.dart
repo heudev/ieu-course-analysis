@@ -21,8 +21,6 @@ class FirestoreService {
         "departmentName": department.departmentName,
         "facultyName": facultyName,
         "courses": coursesWithIds,
-        "createdAt": FieldValue.serverTimestamp(),
-        "updatedAt": FieldValue.serverTimestamp(),
         "user": {
           "email": FirebaseAuth.instance.currentUser!.email,
           "name": FirebaseAuth.instance.currentUser!.displayName,

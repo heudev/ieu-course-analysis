@@ -39,7 +39,7 @@ class FirestoreService {
   }
 
   Future<void> updateCourses(String departmentId, List<Course> courses) async {
-    List<Map<String, Object>> courseJsonList =
+    List<Map<String, Object?>> courseJsonList =
         courses.map((course) => course.toJson()).toList();
     await _firestore
         .collection('departments')
