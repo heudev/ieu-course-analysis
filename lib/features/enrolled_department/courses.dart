@@ -141,7 +141,20 @@ class _CoursesScreenState extends State<CoursesScreen> {
                 key: Key(course.id),
                 title: Text(course.name),
                 subtitle: Row(
-                  children: [Text(course.code)],
+                  children: [
+                    CircleAvatar(
+                      radius: 10,
+                      backgroundColor: Colors.purple,
+                      child: Text(
+                        (course.semester)[0],
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Text(" ${course.code}"),
+                  ],
                 ),
                 trailing: course.grade == '' && course.taking
                     ? const Icon(Icons.hourglass_empty)
