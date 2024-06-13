@@ -8,18 +8,6 @@ class AcademicProgressScreen extends StatelessWidget {
 
   const AcademicProgressScreen({super.key, required this.courses});
 
-/* 
-"departments": [
-      {
-        "department": "Department of Aerospace Engineering",
-        "courses": [
-          { "code": "ENG 101", "prerequisites": null, "name": "Academic Skills in English I", "ects": 3, "grade": "", "semester": "1. Year Fall Semester", "checked": false, "taking": false },
-          { "code": "FENG 101", "prerequisites": null, "name": "Fundamentals of Engineering Culture", "ects": 4, "grade": "", "semester": "1. Year Fall Semester", "checked": false, "taking": false },
-
-        }
-      ]
-*/
-
   @override
   Widget build(BuildContext context) {
     CourseAnalysisFacade analysisFacade = CourseAnalysisFacade(courses);
@@ -30,12 +18,8 @@ class AcademicProgressScreen extends StatelessWidget {
     Map<String, Object> totalECTS = analysisFacade.calculateTotalECTS();
     Map<String, Object> completedCourses =
         analysisFacade.calculateCompletedCourses();
-    List<Map<String, Object>> calculateSemesterGPAs =
-        analysisFacade.calculateSemesterGPAs();
     List<Map<String, Object>> semesterGPAs =
         analysisFacade.calculateSemesterGPAs();
-
-    print(calculateSemesterGPAs);
 
     return Scaffold(
       appBar: AppBar(
@@ -130,7 +114,7 @@ class AcademicProgressScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: DataTable(
-              columnSpacing: 35, // Kolonlar arasındaki boşluğu azaltmak için
+              columnSpacing: 35,
               columns: const <DataColumn>[
                 DataColumn(
                   label: Text(
@@ -174,5 +158,3 @@ class AcademicProgressScreen extends StatelessWidget {
     );
   }
 }
-
-// course.semester.contains('Fall') ? Colors.blue : Colors.red

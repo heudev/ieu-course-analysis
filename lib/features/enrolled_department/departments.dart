@@ -38,9 +38,6 @@ class EnrolledDepartments extends StatelessWidget {
             );
           }
 
-          {
-            print(snapshot.data);
-          }
           List<Department> departments = snapshot.data ?? [];
 
           return ListView.builder(

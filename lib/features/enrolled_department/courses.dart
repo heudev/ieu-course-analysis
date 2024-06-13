@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:courseanalysis/features/enrolled_department/academic_progress.dart';
 import 'package:courseanalysis/features/enrolled_department/models/course.dart';
 import 'package:courseanalysis/features/enrolled_department/models/department.dart';
@@ -60,11 +61,44 @@ class _CoursesScreenState extends State<CoursesScreen> {
     courseService.updateCourses(widget.department.docId, courses);
   }
 
-  // order the courses by semester and update the firestore and state
   void orderCourses() {
     courses.sort((a, b) => a.semester.compareTo(b.semester));
     courseService.updateCourses(widget.department.docId, courses);
     setState(() {});
+  }
+
+  Future<String> getMostCommonGrade(String courseCode) async {
+    try {
+      final QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('departments').get();
+
+      Map<String, int> gradeCounts = {};
+      for (var doc in snapshot.docs) {
+        List<dynamic> courses = doc['courses'];
+        for (var course in courses) {
+          if (course['code'] == courseCode && course['grade'] != '') {
+            String grade = course['grade'];
+            gradeCounts[grade] = (gradeCounts[grade] ?? 0) + 1;
+          }
+        }
+      }
+
+      String mostCommonGrade = '';
+      int maxCount = 0;
+      gradeCounts.forEach((grade, count) {
+        if (count > maxCount) {
+          maxCount = count;
+          mostCommonGrade = grade;
+        }
+      });
+
+      return mostCommonGrade.isNotEmpty
+          ? mostCommonGrade
+          : 'No grades available';
+    } catch (e) {
+      print('Error getting most common grade: $e');
+      return 'Error';
+    }
   }
 
   @override
@@ -161,6 +195,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                     : Text(course.grade,
                         style: const TextStyle(fontSize: 18.0)),
                 onTap: () async {
+                  final mostCommonGrade = await getMostCommonGrade(course.code);
                   await showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
@@ -333,6 +368,25 @@ class _CoursesScreenState extends State<CoursesScreen> {
                                         course.grade = value!;
                                       });
                                     },
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        'Most Common Grade:',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        mostCommonGrade,
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   DropdownButtonFormField<bool>(
                                     value: course.taking,
